@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const telegraf_1 = require("telegraf");
+const dotenv_1 = require("dotenv");
+(0, dotenv_1.config)();
+const bot = new telegraf_1.Telegraf(process.env.BOT_TOKEN);
+bot.use((0, telegraf_1.session)());
+bot.start((ctx) => ctx.reply("Привет! Я — ваш помощник в мире лекарств и здоровья. Помогу найти нужное средство, сравнить цены в аптеках вашего города и оформить заказ. Всё в одном чате — просто напишите название препарата!"));
+bot.launch();
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));
