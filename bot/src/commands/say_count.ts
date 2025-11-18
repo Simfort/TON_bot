@@ -2,7 +2,7 @@ import MyContext from "../types/MyContext";
 
 const say_count = async (ctx: MyContext) => {
   if (ctx.session.commandBuyTon) {
-    const count = +ctx.message!.text;
+    const count = (+ctx.message! as any).text;
     ctx.session.commandBuyTon = false;
     return await ctx.replyWithInvoice({
       title: count + " TON",
