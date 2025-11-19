@@ -46,7 +46,7 @@ bot.on("successful_payment", async (ctx) => {
   await ctx.reply("Спасибо за покупку!");
 });
 //----------------------
-
+bot.telegram.setWebhook(process.env.VERCEL_URL!);
 bot.launch();
 
 process.once("SIGINT", () => bot.stop("SIGINT"));
